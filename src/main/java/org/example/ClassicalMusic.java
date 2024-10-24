@@ -8,28 +8,27 @@ import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.Random;
 
-@Component
-@Scope("singleton")
 public class ClassicalMusic implements Music{
-    @Value("#{'${classicalMusicList}'.split(',')}")
+//    @Value("#{'${classicalMusicList}'.split(',')}")
     private List<String> songs;
     private final Random rand = new Random();
-    private ClassicalMusic() {
-    }
+//    private ClassicalMusic() {
+//    }
     public static ClassicalMusic getClassicalMusic(){
         return new ClassicalMusic();
     }
     @Override
     public String getSong() {
-        return songs.get(rand.nextInt(songs.size()));
+//        return songs.get(rand.nextInt(songs.size()));
+        return "classic1";
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void doMyInit() {
         System.out.println("Doing my initialization");
     }
 
-    @PreDestroy
+//    @PreDestroy
     public void doMyDestroy() {
         System.out.println("Doing my Destruction");
     }

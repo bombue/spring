@@ -8,22 +8,22 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-@Component
-@Scope("prototype")
 public class MusicPlayer {
-//    private List<Music> musicList = new ArrayList<>();
+    private List<Music> musicList;
     @Value("${musicPlayer.name}")
     private String name;
     @Value("${musicPlayer.volume}")
     private int volume;
-    private Music music1;
-    private Music music2;
+//    private Music music1;
+//    private Music music2;
+    private final Random rand = new Random();
 
-    @Autowired
-    public MusicPlayer(@Qualifier("someRockMusic") Music music1, @Qualifier("classicalMusic") Music music2) {
-        this.music1 = music1;
-        this.music2 = music2;
+    public MusicPlayer(List<Music> musicList) {
+//        this.music1 = music1;
+//        this.music2 = music2;
+        this.musicList = musicList;
     }
 
     //    @Autowired
@@ -34,17 +34,20 @@ public class MusicPlayer {
 
 //    public MusicPlayer() {};
 
-    public String  playMusic(Music.Genres genre){
-//        musicList.forEach(music -> System.out.println("Playing: "+music.getSong()));
-//        System.out.println("Playing: "+classicalMusic.getSong());
-//        System.out.println("Playing: "+rockMusic.getSong());
-        if (genre.equals(Music.Genres.CLASSIC)) {
-            return "Playing: "+music2.getSong();
-        } else if (genre.equals(Music.Genres.ROCK)) {
-            return "Playing: "+music1.getSong();
-        } else {
-            return "wrong genre";
-        }
+//    public String  playMusic(Music.Genres genre){
+////        musicList.forEach(music -> System.out.println("Playing: "+music.getSong()));
+////        System.out.println("Playing: "+classicalMusic.getSong());
+////        System.out.println("Playing: "+rockMusic.getSong());
+//        if (genre.equals(Music.Genres.CLASSIC)) {
+//            return "Playing: "+music2.getSong();
+//        } else if (genre.equals(Music.Genres.ROCK)) {
+//            return "Playing: "+music1.getSong();
+//        } else {
+//            return "wrong genre";
+//        }
+//    }
+    public String playMusic() {
+        return "Playing: " + musicList.get(rand.nextInt(musicList.size())).getSong();
     }
 
     public int getVolume() {

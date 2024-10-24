@@ -7,15 +7,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Random;
 
-@Component("someRockMusic")
-@Scope("singleton")
 public class RockMusic implements Music{
 
     private final Random rand = new Random();
-    @Value("#{'${rockMusicList}'.split(',')}")
     private List<String> songs;
     @Override
     public String getSong() {
-        return songs.get(rand.nextInt(songs.size()));
+//        return songs.get(rand.nextInt(songs.size()));
+        return "rock1";
     }
 }

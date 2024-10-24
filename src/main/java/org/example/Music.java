@@ -3,7 +3,8 @@ package org.example;
 public interface Music {
     enum Genres {
         CLASSIC,
-        ROCK;
+        ROCK,
+        POP;
     }
     String getSong();
 }
