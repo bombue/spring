@@ -1,13 +1,13 @@
 package org.example;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class TestSpring {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
         MusicPlayer firstMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        System.out.println(firstMusicPlayer.playMusic(MusicPlayer.Genres.ROCK));
+        System.out.println(firstMusicPlayer.playMusic(Music.Genres.CLASSIC));
 //        MusicPlayer secondMusicPlauer = context.getBean("musicPlayer", MusicPlayer.class);
 //        secondMusicPlauer.setName("dddd");
 //        System.out.println(firstMusicPlayer.getName());

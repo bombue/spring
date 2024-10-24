@@ -19,10 +19,6 @@ public class MusicPlayer {
     private int volume;
     private Music music1;
     private Music music2;
-    public enum Genres {
-        CLASSIC,
-        ROCK;
-    }
 
     @Autowired
     public MusicPlayer(@Qualifier("someRockMusic") Music music1, @Qualifier("classicalMusic") Music music2) {
@@ -38,13 +34,13 @@ public class MusicPlayer {
 
 //    public MusicPlayer() {};
 
-    public String  playMusic(Genres genre){
+    public String  playMusic(Music.Genres genre){
 //        musicList.forEach(music -> System.out.println("Playing: "+music.getSong()));
 //        System.out.println("Playing: "+classicalMusic.getSong());
 //        System.out.println("Playing: "+rockMusic.getSong());
-        if (genre.equals(Genres.CLASSIC)) {
+        if (genre.equals(Music.Genres.CLASSIC)) {
             return "Playing: "+music2.getSong();
-        } else if (genre.equals(Genres.ROCK)) {
+        } else if (genre.equals(Music.Genres.ROCK)) {
             return "Playing: "+music1.getSong();
         } else {
             return "wrong genre";
@@ -66,6 +62,7 @@ public class MusicPlayer {
     public void setName(String name) {
         this.name = name;
     }
+
 //    public List<Music> getMusicList() {
 //        return musicList;
 //    }
